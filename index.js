@@ -5,6 +5,7 @@ exports.handler = async function(event) {
     //The Twilio message comes in as Base64 encoded query string so convert to JSON
     const message = queryString.parse(Buffer.from(event.body, 'base64').toString());
     //Create a post on the blog with the SMS message
+    //Use the message text as the blog title and content
     return wpcom.site( process.env.BlogEndpoint )
                 .addPost( { title: message.Body,
                             content: message.Body } );
