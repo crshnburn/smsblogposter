@@ -1,0 +1,15 @@
+{
+  "name": "twilioblogposter",
+  "version": "1.0.0",
+  "description": "WebHook to post a SMS message as a WordPress blog post",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Smithson",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "query-string": "^6.13.5",
+    "wpcom": "^5.4.2"
+  }
+}
