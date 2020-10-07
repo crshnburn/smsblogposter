@@ -3,7 +3,7 @@ name: lambda-depl
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy_source:
