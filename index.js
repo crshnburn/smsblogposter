@@ -8,10 +8,16 @@ exports.handler = async function(event) {
     //Create a post on the blog with the SMS message
     //Use the message text as the blog title and content
     if(process.env.SelfHosted === "true"){
-        const wp = new wpapi({endpoint: process.env.BlogEndpoint});
+        const wp = new wpapi({
+            endpoint: process.env.BlogEndpoint,
+            username: process.env.Username,
+            password: process.env.Password
+        });
         return wp.posts().create({
-            title: message.Body,
-            content: message.Body
+            title: `New SMS Message from ${message.From}`,
+            content: message.Body,
+            categories: 'Text Messages',
+            status: 'publish'
         });
     } else {
         return wpcom.site(process.env.BlogEndpoint)
