@@ -7,7 +7,7 @@ exports.handler = async function(event) {
     const message = queryString.parse(Buffer.from(event.body, 'base64').toString());
     //Create a post on the blog with the SMS message
     //Use the message text as the blog title and content
-    if(process.env.SelfHosted){
+    if(process.env.SelfHosted === "true"){
         const wp = new wpapi({endpoint: process.env.BlogEndpoint});
         return wp.posts().create({
             title: message.Body,
