@@ -16,7 +16,7 @@ exports.handler = async function(event) {
         return wp.posts().create({
             title: `New SMS Message from ${message.From}`,
             content: message.Body,
-            categories: 'Text Messages',
+            categories: [37],
             status: 'publish'
         });
     } else {
