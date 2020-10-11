@@ -10,6 +10,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "query-string": "^6.13.5",
+    "wpapi": "^1.2.1",
     "wpcom": "^5.4.2"
+  },
+  "repository": {
+    "url": "https://github.com/crshnburn/smsblogposter",
+    "type": "git"
   }
 }
