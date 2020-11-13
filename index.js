@@ -19,7 +19,12 @@ exports.handler = async function(event) {
             categories: [37],
             status: 'publish'
         }).then(console.log).catch(console.log);
-        return "<Response></Response>";
+        return {
+            "isBase64Encoded": false,
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/xml"},
+            "body": "<Response></Response>"
+        };
     } else {
         return wpcom.site(process.env.BlogEndpoint)
                     .addPost({
