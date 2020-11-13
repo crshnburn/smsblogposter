@@ -13,12 +13,13 @@ exports.handler = async function(event) {
             username: process.env.Username,
             password: process.env.Password
         });
-        return wp.posts().create({
+        wp.posts().create({
             title: `New SMS Message from ${message.From}`,
             content: message.Body,
             categories: [37],
             status: 'publish'
-        });
+        }).then(console.log).catch(console.log);
+        return "<Response></Response>";
     } else {
         return wpcom.site(process.env.BlogEndpoint)
                     .addPost({
