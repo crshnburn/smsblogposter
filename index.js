@@ -13,12 +13,17 @@ exports.handler = async function(event) {
             username: process.env.Username,
             password: process.env.Password
         });
-        wp.posts().create({
-            title: `New SMS Message from ${message.From}`,
-            content: message.Body,
-            categories: [37],
-            status: 'publish'
-        }).then(console.log).catch(console.log);
+        try {
+            let response = await wp.posts().create({
+                title: `New SMS Message from ${message.From}`,
+                content: message.Body,
+                categories: [37],
+                status: 'publish'
+            });
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
         return {
             "isBase64Encoded": false,
             "statusCode": 200,
